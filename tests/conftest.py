@@ -1,16 +1,12 @@
 import pytest
-from selene import browser
-from selenium import webdriver
+from selene.support.shared import browser
 
 
-@pytest.fixture(scope="session", autouse=True)
-def browser_management():
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--window-size=1920x1080')
-    browser.config.driver_options = options
+@pytest.fixture(scope='function', autouse=True)
+def browser_window():
+    browser.config.window_width = 1920
+    browser.config.window_height = 1080
 
     yield
 
-    browser.close()
+    browser.quit()

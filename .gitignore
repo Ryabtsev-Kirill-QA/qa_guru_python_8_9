@@ -1,0 +1,7 @@
+# Allure
+tests/allure-results
+
+# Idea
+.idea
+
+.pytest_cache
